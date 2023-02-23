@@ -1,22 +1,38 @@
+import { useState,useRef } from "react";
 import { FaGithub } from "react-icons/fa";
-import { VscChromeMaximize, VscChromeMinimize, VscChromeClose, VscSplitHorizontal, VscTerminalTmux, VscSplitVertical } from "react-icons/vsc";
-
+import { VscMenu,VscChromeMaximize, VscChromeMinimize, VscChromeClose, VscSplitHorizontal, VscTerminalTmux, VscSplitVertical } from "react-icons/vsc";
+import { GoKebabHorizontal } from "react-icons/go";
 
 function Nav() {
+    const windowSize = useRef([window.innerWidth, window.innerHeight]);
+
+    const [isNavExpanded, setIsNavExpanded] = useState(false)
   return (
+    <>
     <nav>
+        {/*<h2>Width: {windowSize.current[0]}</h2>
+
+        <h2>Height: {windowSize.current[1]}</h2>*/
+        }
         <div id="nav-link-section" className="nav-section">
+        
             <a href="#" id="logo">
                 <FaGithub/>
             </a>
-            <a href="#">File</a>
-            <a href="#">Edit</a>
-            <a href="#">Selection</a>
-            <a href="#">View</a>
-            <a href="#">Go</a>
-            <a href="#">Run</a>
-            <a href="#">Terminal</a>
-            <a href="#">Help</a>
+            <button className="barsToggler" onClick={() => {setIsNavExpanded(!isNavExpanded);}}>
+                <VscMenu/>
+            </button>
+            <a className="navItem" href="#">File</a>
+            <a className="navItem" href="#">Edit</a>
+            <a className="navItem" href="#">Selection</a>
+            <a className="navItem" href="#">View</a>
+            <a className="navItem" href="#">Go</a>
+            <a className="navItem" href="#">Run</a>
+            <a className="navItem" href="#">Terminal</a>
+            <a className="navItem" href="#">Help</a>
+            <button className="kebab">
+                <GoKebabHorizontal/>
+            </button>
         </div>
         <div id="nav-text-section" className="nav-section">
             <p>Nav.jsx - portafolio - Visual Studio Code</p>
@@ -47,6 +63,22 @@ function Nav() {
             </a>
         </div>
     </nav>
+    {
+        isNavExpanded ? (
+        <div className="menu">
+            <a href="#">File</a>
+            <a href="#">Edit</a>
+            <a href="#">Selection</a>
+            <a href="#">View</a>
+            <a href="#">Go</a>
+            <a href="#">Run</a>
+            <a href="#">Terminal</a>
+            <a href="#">Help</a>
+        </div>
+    ):(<></>)
+    }
+    
+    </>
   )
 }
 

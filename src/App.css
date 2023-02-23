@@ -1,8 +1,10 @@
 :root{
+  --menu-background-color :#1e1e1e;
   --background-color: #1e1e1e;
   --border-color: #6b6b6b;
   --menu-foreground: #cccccc;
   --nav-background: #404040;
+  --nav-hover : #454545;
 }
 
 * {
@@ -19,7 +21,7 @@ body {
   margin: 0px;
   overflow: hidden;
 }
-a svg{
+svg{
   color: #ffffff;
   font-size: 12pt;
 }
@@ -38,10 +40,12 @@ nav > .nav-section {
 }
 
 #logo{
-  margin-left: 0.6rem;
+  position: absolute;
+  left: 0.6rem;
 }
 
 nav > .nav-section#nav-link-section {
+  margin-left: 3.2rem;
   gap: 1.18rem; 
 }
 
@@ -72,3 +76,63 @@ nav a,p{
   color: var(--menu-foreground);
   text-decoration: none;
 }
+
+.barsToggler,.kebab{
+  background-color: var(--nav-background);
+  border: 0px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 40px;
+}
+
+.barsToggler{
+  position: absolute;
+  left: 2.2rem;
+}
+
+.barsToggler:hover,.kebab:hover{
+  background-color: var(--nav-hover);
+}
+
+.barsToggler{
+  display: none;
+}
+
+.kebab{
+  display: none;
+}
+
+.menu{
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  position: absolute;
+  left: 2.2rem;
+  top: 2rem;
+  width: 150px;
+  height: 200px;
+  background-color: var(--menu-background-color);
+  display: none;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 1028px) {
+  .kebab {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 815px) {
+  .barsToggler {
+    display: block;
+  }
+  .kebab {
+    display: none;
+  }
+  .navItem {
+    display: none;
+  }
+  .menu{
+    display: flex;
+  }
+}
+
