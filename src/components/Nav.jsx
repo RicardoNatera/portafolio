@@ -14,12 +14,27 @@ function Nav() {
 
     const size = useWindowSize();
 
+    const calculateSize = (text,font) => {
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+
+        context.font = font || getComputedStyle(document.body).font;
+
+        return context.measureText(text).width;
+    }
+
     useEffect(() => {
-        let textSize =calculateSize(textAux,"Arial")+60
+
+        let textSize = calculateSize(textAux,"Arial")+60
         let elementSize = textEl.current.clientWidth
-        let numberCharOverflow = Math.floor( textSize - elementSize )
-        if(numberCharOverflow==0) numberCharOverflow=1
+
         if( textSize > elementSize ){
+            let numberCharOverflow = Math.floor( textSize - elementSize )
+
+            if(numberCharOverflow==0) {
+                numberCharOverflow=1
+            }
+
             let textLength = textAux.length
             let index = textLength-(numberCharOverflow)
 
@@ -33,16 +48,9 @@ function Nav() {
         }else{
             setText(textAux)
         }
-    })
+
+    }, [size] )
     
-    const calculateSize = (text,font) => {
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
-
-        context.font = font || getComputedStyle(document.body).font;
-
-        return context.measureText(text).width;
-    }
   return (
     <>
     <nav>
