@@ -5,6 +5,7 @@
   --menu-foreground: #cccccc;
   --nav-background: #404040;
   --nav-hover : #454545;
+  --item-list-hover : #2472c8;
 }
 
 * {
@@ -108,16 +109,53 @@ nav a,p{
   position: absolute;
   left: 2.2rem;
   top: 2rem;
-  width: 150px;
-  height: 200px;
+  width: 180px;
+  height: auto;
+  background-color: var(--menu-background-color);
+  display: none;
+  flex-direction: column;
+}
+.menu-kebab{
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  position: absolute;
+  top: 2rem;
+  width: 180px;
+  height: auto;
   background-color: var(--menu-background-color);
   display: none;
   flex-direction: column;
 }
 
+.responsiveItem{
+  padding-left: 2rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+  border-radius: 5px;
+  text-decoration: none;
+  color: var(--menu-foreground);
+}
+.responsiveItem:first-child,.responsiveItem:last-child{
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+.responsiveItem:hover{
+  background-color: var(--item-list-hover);
+}
+.responsiveItem>svg{
+  color: var(--menu-foreground);
+  position: absolute;
+  right: 1rem;
+}
+
 @media screen and (max-width: 1028px) {
   .kebab {
     display: block;
+  }
+  .menu-kebab{
+    display: flex;
   }
 }
 
@@ -133,6 +171,9 @@ nav a,p{
   }
   .menu{
     display: flex;
+  }
+  .menu-kebab{
+    display: none;
   }
 }
 
