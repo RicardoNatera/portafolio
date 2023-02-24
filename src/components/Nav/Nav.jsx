@@ -3,7 +3,9 @@ import { FaGithub } from "react-icons/fa";
 import { VscChevronRight, VscMenu,VscChromeMaximize, VscChromeMinimize, VscChromeClose, VscSplitHorizontal, VscTerminalTmux, VscSplitVertical } from "react-icons/vsc";
 import { GoKebabHorizontal } from "react-icons/go";
 
-import useWindowSize from "../hooks/useWindowSize";
+import useWindowSize from "../../hooks/useWindowSize";
+
+import './nav.css'
 
 function Nav() {
     const [isNavExpanded, setIsNavExpanded] = useState(false)
